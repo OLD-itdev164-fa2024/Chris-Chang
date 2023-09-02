@@ -2,4 +2,4 @@
 
 Hello world!!
 
-installed gatsby
+Installed gatsby
