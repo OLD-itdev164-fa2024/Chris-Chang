@@ -34,7 +34,7 @@ module.exports = {
         spaceId: `YOUR SPACE ID`,
         accessToken: `YOUR ACCESS TOKEN`
       }
-    }
+    },
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
     {
