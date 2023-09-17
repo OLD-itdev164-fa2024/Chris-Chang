@@ -7,6 +7,16 @@
 /**
  * @type {import('gatsby').GatsbyConfig}
  */
+
+// this code below didn't work, so I looked online for
+// an alternative method to access dotenv files
+// ** require('dotenv').config({
+// **   path: `.env.${process.env.NODE_ENV}`
+// ** });
+
+//this dotenv code worked when running gatsby
+require("dotenv").config();
+
 module.exports = {
   siteMetadata: {
     title: `Chris Chang's Gatsby Blog`,
@@ -31,10 +41,11 @@ module.exports = {
     {
       resolve: `gatsby-source-contentful`,
       options: {
-        spaceId: `wsg9ubagk56r`,
-        accessToken: `oEFEd_4AfraULrrpX8zyVzb9Sri7UH0ZsIcPuNKSzd4`
+        spaceId: `${process.env.SPACE_ID}`,
+        accessToken: `${process.env.ACCESS_TOKEN}`
       }
     },
+    `gatsby-transformer-remark`,
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
     {

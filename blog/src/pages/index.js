@@ -4,6 +4,7 @@ import {graphql, Link } from "gatsby"
 import Layout from "../components/layout"
 import Seo from "../components/seo"
 import * as styles from "../components/index.module.css"
+import { GatsbyImage } from "gatsby-plugin-image"
 
 const IndexPage = ({ data }) => (
   <Layout>
@@ -13,6 +14,13 @@ const IndexPage = ({ data }) => (
         data.allContentfulBlogPost.edges.map(edge => (
           <li key={edge.node.id}>
             <Link to={edge.node.slug}>{edge.node.title}</Link>
+            <div>
+              <GatsbyImage image={edge.node.heroImage.gatsbyImageData}>
+              </GatsbyImage>
+            </div>
+            <div>
+              {edge.node.body.childrenMarkdownRemark}
+            </div>
           </li>
         ))
       }
@@ -35,6 +43,14 @@ export const query = graphql`
       edges {
         node {
           slug
+          heroImage {
+            gatsbyImageData(layout: CONSTRAINED, placeholder: BLURRED, width: 300)
+          }
+          body {
+            childMarkdownRemark {
+              excerpt
+            }
+          }
           id
           title
         }
