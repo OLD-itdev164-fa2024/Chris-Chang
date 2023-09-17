@@ -28,7 +28,7 @@ exports.createPages = async ({ graphql, actions }) => {
       result.data.allContentfulBlogPost.edges.forEach((edge) => {
         createPage ({
           path: edge.node.slug,
-          component: require.resolve("./src/templates/using-dsg.js"), //I don't have the blog post
+          component: require.resolve("./src/templates/blog-post.js"), //I don't have the blog post
           context : {
             slug: edge.node.slug
           },
