@@ -21,7 +21,7 @@ const IndexPage = ({ data }) => (
               </GatsbyImage>
             </div>
             <div>
-              {edge.node.body.childrenMarkdownRemark}
+              {edge.node.description.childMarkdownRemark.excerpt}
             </div>
           </ListItem>
         ))
@@ -40,26 +40,26 @@ export const Head = () => <Seo title="Home" />
 export default IndexPage
 
 export const query = graphql`
-  query {
-    allContentfulBlogPost {
-      edges {
-        node {
-          slug
-          heroImage {
-            gatsbyImageData(
-              layout: CONSTRAINED, 
-              placeholder: BLURRED, 
-              width: 600)
-          }
-          body {
-            childMarkdownRemark {
-              excerpt
-            }
-          }
-          id
-          title
+query {
+  allContentfulBlogPost {
+    edges {
+      node{
+        slug
+        heroImage {
+          gatsbyImageData (
+            layout: CONSTRAINED,
+            placeholder: BLURRED,
+            width: 600)
         }
+        description{
+          childMarkdownRemark{
+            excerpt
+          }
+        }
+        id
+        title
       }
     }
   }
+}
 `
